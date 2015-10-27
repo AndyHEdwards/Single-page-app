@@ -17,7 +17,10 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def destroy
+    @posts = Post.all
+    @posts.destroy_all
   end
+
 
   private
 
