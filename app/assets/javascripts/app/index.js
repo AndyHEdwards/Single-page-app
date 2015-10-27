@@ -4,8 +4,14 @@ $(function(){
   view = new View()
 
   $('#createPost').click(function(e){
-    $('#posts').hide()
+    // $('#posts').hide()
     view.displayForm()
+  })
+
+  $('#deletePosts').click(function(e){
+    controller.deletePosts()
+    console.log("hi")
+    $('#posts').empty()
   })
 })
 
