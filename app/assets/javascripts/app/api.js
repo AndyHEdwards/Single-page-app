@@ -2,8 +2,10 @@ var Api = function(){
 
 }
 
-Api.prototype.index = function(){
+Api.prototype.indexPosts = function(callback){
   $.get('http://localhost:3000/api/v1/posts', function(data){
-    console.log(data)
+    callback(data)
   })
 }
+
+
