@@ -9,7 +9,7 @@ View.prototype.displayPosts = function(data){
   }
 }
 
-View.prototype.displayForm = function(){
+View.prototype.displayPostForm = function(){
   $('#content').append("<form id='postForm'>Title:<br><input type='text' name='title'><br>Body:<br><input id='formBody' type='text' name='body'><br><br><input type='submit' value='Submit' id='submitPost'></form>")
   $('#postForm').submit(function(){
     var formTitle = $('#postForm input').val()
@@ -19,3 +19,11 @@ View.prototype.displayForm = function(){
   })
 }
 
+View.prototype.displayUserForm = function(){
+  $('#content').append("<form id='userForm'>Name:<br><input type='text' name='name'><input type='submit' value='Submit' id='submitPost'></form>")
+  $('#userForm').submit(function(){
+    var formName = $('#userForm input').val()
+    var object = {user: {name: formName}}
+    controller.createUser(object)
+  })
+}
