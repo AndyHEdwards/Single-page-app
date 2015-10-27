@@ -19,6 +19,7 @@ class Api::V1::PostsController < ApplicationController
   def destroy
     @posts = Post.all
     @posts.destroy_all
+    head 200
   end
 
 

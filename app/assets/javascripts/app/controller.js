@@ -15,3 +15,8 @@ Controller.prototype.createPost = function(data){
   api.createPost(data)
 }
 
+Controller.prototype.deletePosts = function(){
+  var api = new Api()
+  var view = new View()
+  api.deletePosts()
+}
