@@ -21,3 +21,8 @@ Api.prototype.deletePosts = function(){
     }
   });
 }
+
+
+Api.prototype.createUser = function(data){
+  $.post('http://localhost:3000/api/v1/users', data)
+}

@@ -3,15 +3,18 @@ $(function(){
   controller.getPosts()
   view = new View()
 
-  $('#createPost').click(function(e){
+  $('#createPost').click(function(){
     // $('#posts').hide()
-    view.displayForm()
+    view.displayPostForm()
   })
 
-  $('#deletePosts').click(function(e){
+  $('#deletePosts').click(function(){
     controller.deletePosts()
-    console.log("hi")
     $('#posts').empty()
+  })
+
+  $('#createUser').click(function(){
+    view.displayUserForm()
   })
 })
 

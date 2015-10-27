@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :posts, except: :destroy
       delete "posts" => "posts#destroy"
+
+      resources :users
     end
   end
 end
