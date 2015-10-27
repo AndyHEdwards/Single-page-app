@@ -9,3 +9,9 @@ Controller.prototype.getPosts = function(){
   })
 }
 
+Controller.prototype.createPost = function(data){
+  var api = new Api()
+  var view = new View()
+  api.createPost(data)
+}
+

@@ -8,4 +8,8 @@ Api.prototype.indexPosts = function(callback){
   })
 }
 
+Api.prototype.createPost = function(data){
+  $.post('http://localhost:3000/api/v1/posts?post[title]='+ data.title + '&post[body]=' + data.body)
+}
+
 
