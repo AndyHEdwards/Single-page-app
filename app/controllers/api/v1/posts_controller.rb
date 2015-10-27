@@ -9,6 +9,8 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def create
+    @post = Post.create!(post_params)
+    redirect_to root_path
   end
 
   def update
@@ -16,4 +18,12 @@ class Api::V1::PostsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :body)
+  end
+
+
 end
