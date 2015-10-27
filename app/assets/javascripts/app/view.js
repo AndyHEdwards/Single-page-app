@@ -14,7 +14,7 @@ View.prototype.displayForm = function(){
   $('#postForm').submit(function(){
     var formTitle = $('#postForm input').val()
     var formBody = $('#formBody').val()
-    var object = {title: formTitle, body: formBody}
+    var object = {post: {title: formTitle, body: formBody}}
     controller.createPost(object)
   })
 }
