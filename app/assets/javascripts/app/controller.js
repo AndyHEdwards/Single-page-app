@@ -1,37 +1,28 @@
 var Controller = function(){
+  this.api = new Api()
+  this.view = new View()
 }
 
-Controller.prototype.getPosts = function(){
-  var api = new Api()
-  var view = new View()
-  api.indexPosts(function(data){
-    view.displayPosts(data)
-  })
+Controller.prototype.displayPosts = function(){
+  this.api.indexPosts(function(data){
+    this.view.displayPosts(data)
+  }.bind(this))
 }
 // POSTS
 Controller.prototype.createPost = function(data){
-  var api = new Api()
-  var view = new View()
-  api.createPost(data)
+  this.api.createPost(data)
+  this.displayPosts()
 }
 
 Controller.prototype.deletePosts = function(){
-  var api = new Api()
-  var view = new View()
-  api.deletePosts()
+  this.api.deletePosts()
+  this.view.emptyPosts()
 }
 
-// Users
 Controller.prototype.createUser = function(data){
-  var api = new Api()
-  var view = new View()
-  api.createUser(data)
+  this.api.createUser(data)
 }
 
-
-// Sessions
 Controller.prototype.createSession = function(data){
-  var api = new Api()
-  var view = new View()
-  api.createSession(data)
+  this.api.createSession(data)
 }

@@ -1,38 +1,59 @@
-var View = function(){
-}
+var View = (function() {
+  function View(){
+  }
 
-View.prototype.displayPosts = function(data){
-  for(var i = 0; i < data.length; i++){
-    $('#posts').append("<h2> " + data[i].title + "</h2>")
-    $('#posts').append("<p> " + data[i].body + "</p>")
+  View.prototype.displayPosts = function(data){
+    this.emptyPosts()
+    for(i in data) { appendPost(data[i]) }
+  }
+
+  View.prototype.displayPostForm = function(){
+    appendPostForm() 
+    bindPostFormListener()
+  }
+
+  View.prototype.displayUserForm = function(){
+    $('#content').append("<form id='userForm'>Name:<br><input type='text' name='name'><input type='submit' value='Submit' id='submitPost'></form>")
+    $('#userForm').submit(function(e){
+      e.preventDefault()
+      var formName = $('#userForm input').val()
+      var object = {user: {name: formName}}
+      controller.createUser(object)
+    })
+  }
+
+  View.prototype.displaySessionForm = function(){
+    $('#content').append("<form id='sessionForm'>Name:<br><input type='text' name='name'><input type='submit' value='Login' id='submitPost'></form>")
+    $('#sessionForm').submit(function(e){
+      e.preventDefault()
+      var userName = $('#sessionForm input').val()
+      var object = {name: userName}
+      controller.createSession(object)
+    })
+  }
+
+  View.prototype.emptyPosts = function() {
+    $('#posts').empty()
+  }
+
+  function appendPost(post) {
+    $('#posts').append("<h2> " + post.title + "</h2>")
+    $('#posts').append("<p> " + post.body + "</p>")
     $('#posts').append("------------------------------------------------------------------------")
   }
-}
 
-View.prototype.displayPostForm = function(){
-  $('#content').append("<form id='postForm'>Title:<br><input type='text' name='title'><br>Body:<br><input id='formBody' type='text' name='body'><br><br><input type='submit' value='Submit' id='submitPost'></form>")
-  $('#postForm').submit(function(){
-    var formTitle = $('#postForm input').val()
-    var formBody = $('#formBody').val()
-    var object = {post: {title: formTitle, body: formBody}}
-    controller.createPost(object)
-  })
-}
+  function appendPostForm() {
+    $('#content').append("<form id='postForm'>Title:<br><input type='text' name='title'><br>Body:<br><input id='formBody' type='text' name='body'><br><br><input type='submit' value='Submit' id='submitPost'></form>")
+  }
 
-View.prototype.displayUserForm = function(){
-  $('#content').append("<form id='userForm'>Name:<br><input type='text' name='name'><input type='submit' value='Submit' id='submitPost'></form>")
-  $('#userForm').submit(function(){
-    var formName = $('#userForm input').val()
-    var object = {user: {name: formName}}
-    controller.createUser(object)
-  })
-}
+  function bindPostFormListener() {
+    $('#postForm').submit(function(e){
+      e.preventDefault()
+      var formTitle = $('#postForm input').val()
+      var formBody = $('#formBody').val()
 
-View.prototype.displaySessionForm = function(){
-  $('#content').append("<form id='sessionForm'>Name:<br><input type='text' name='name'><input type='submit' value='Login' id='submitPost'></form>")
-  $('#sessionForm').submit(function(){
-    var userName = $('#sessionForm input').val()
-    var object = {name: userName}
-    controller.createSession(object)
-  })
-}
+      controller.createPost({post: {title: formTitle, body: formBody}})
+    })
+  }
+  return View
+})()

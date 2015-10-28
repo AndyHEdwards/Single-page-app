@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      #resources :posts, except: :destroy do
+      resources :posts, except: :destroy #do
       #  collection do
       #    delete 'destroy'
       #  end
