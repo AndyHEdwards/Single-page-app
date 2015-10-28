@@ -27,3 +27,12 @@ View.prototype.displayUserForm = function(){
     controller.createUser(object)
   })
 }
+
+View.prototype.displaySessionForm = function(){
+  $('#content').append("<form id='sessionForm'>Name:<br><input type='text' name='name'><input type='submit' value='Login' id='submitPost'></form>")
+  $('#sessionForm').submit(function(){
+    var userName = $('#sessionForm input').val()
+    var object = {name: userName}
+    controller.createSession(object)
+  })
+}

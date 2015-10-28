@@ -27,3 +27,11 @@ Controller.prototype.createUser = function(data){
   var view = new View()
   api.createUser(data)
 }
+
+
+// Sessions
+Controller.prototype.createSession = function(data){
+  var api = new Api()
+  var view = new View()
+  api.createSession(data)
+}

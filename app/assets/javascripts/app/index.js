@@ -16,5 +16,9 @@ $(function(){
   $('#createUser').click(function(){
     view.displayUserForm()
   })
+
+  $('#createSession').click(function(){
+    view.displaySessionForm()
+  })
 })
 

@@ -26,3 +26,11 @@ Api.prototype.deletePosts = function(){
 Api.prototype.createUser = function(data){
   $.post('http://localhost:3000/api/v1/users', data)
 }
+
+
+Api.prototype.createSession = function(data){
+  $.post('http://localhost:3000/sessions', data, function(response){
+    var view = new View()
+    view.dislayName(response)
+  })
+}
