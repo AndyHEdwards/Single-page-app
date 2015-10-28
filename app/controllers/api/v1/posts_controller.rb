@@ -1,7 +1,7 @@
 class Api::V1::PostsController < ApplicationController
   def index
-    @posts = Post.all
-    render json: @posts
+    posts = Post.all
+    render json: posts
   end
 
   def show
@@ -9,7 +9,7 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create!(post_params)
+    post = Post.create!(post_params)
     redirect_to root_path
   end
 
@@ -17,8 +17,7 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def destroy
-    @posts = Post.all
-    @posts.destroy_all
+    Post.destroy_all
     head 200
   end
 

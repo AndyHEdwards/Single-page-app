@@ -1,6 +1,6 @@
 $(function(){
   controller = new Controller()
-  controller.getPosts()
+  controller.displayPosts()
   view = new View()
 
   $('#createPost').click(function(){
@@ -10,11 +10,14 @@ $(function(){
 
   $('#deletePosts').click(function(){
     controller.deletePosts()
-    $('#posts').empty()
   })
 
   $('#createUser').click(function(){
     view.displayUserForm()
+  })
+
+  $('#createSession').click(function(){
+    view.displaySessionForm()
   })
 })
 
